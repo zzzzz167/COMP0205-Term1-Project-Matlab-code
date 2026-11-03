@@ -1,0 +1,15 @@
+# Generated MATLAB figures and videos (recreate from source).
+/*.png
+/*.mp4
+
+# Generated Python animation media and render caches.
+/climber-anminate/*.png
+/climber-anminate/videos/
+/climber-anminate/.runtime/
+
+# Local operating-system and editor files.
+.DS_Store
+/climber-anminate/.vscode/
+__pycache__/
+*.py[cod]
+.venv/

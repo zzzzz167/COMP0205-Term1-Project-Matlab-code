@@ -1,0 +1,6 @@
+directories:
+  cache: .runtime/manim-cache
+  output: .runtime/render
+  temporary_storage: .runtime/temp
+camera:
+  fps: 30
