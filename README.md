@@ -1,44 +1,21 @@
-# Wall-Gap Climber: MATLAB Models and Animations
+# Wall-Gap Climber: MATLAB Scripts
 
-Mechanism studies for COMP0205 Mechatronics and Making at UCL. The design
-objective is approximately 500 mm cumulative climb between walls 160–260 mm apart.
-The scripts are independent studies, not an integrated validated hardware model.
+## Run
 
-## MATLAB files and outputs
+Open MATLAB in the repository root, then run:
 
-Run each script from this repository folder in MATLAB. Files are saved in the
-**current MATLAB folder** and an existing file with the same name is overwritten.
-The scripts clear workspace variables before running.
+```matlab
+cd('Design_report');
+run('diamond_length.m');             % Fig. 13
+run('lower_diamond_force_anlyse.m');  % Fig. 14
+run('upper_diamond_force_anlyse.m');  % Fig. 15
+run('NScissor_fork_anlyse.m');         % Fig. 16
+run('geneva_planar.m');              % Figs. 17, 18 and 20
+run('lower_req.m');                  % Fig. 19
+```
 
-| File | Purpose and main inputs | What it generates |
-| --- | --- | --- |
-| `NScissor_fork_anlyse.m` | Compare 1, 2 and 3 stages; bar length 150 mm; selected horizontal spacing 40–90 mm | Figure of height versus spacing, shaded travel range and extension values; `Nscissor_fork_anlyse.png` |
-| `Scissor_fork_motion.m` | Two-stage scissor; bar length 2 in consistent arbitrary length units; slider speed 0.2 units/s | Animated figure; `scissor_fork_motion.mp4` if `record = true` |
-| `rhombus_motion.m` | Rhombus with 0.150 m sides; imposed vertical speed 0.05 m/s | Animated linkage and decorative spring; `rhombus_motion.mp4` if `record = true` |
-| `rhombus_motion_anlyse.m` | Side lengths 110–160 mm; pad offset 15 mm on each side | Width versus diagonal plot with 160/260 mm reference lines; `rhombus_motion_anlyse.png` at 300 dpi |
-| `rhombus_force_anlyse.m` | Side lengths 130/140 mm; four candidate springs; mass 2 kg; reference friction coefficient 0.4 | Four-panel plot of normal force per wall and required static friction versus wall gap; `rhombus_force_anlyse.png` at 300 dpi |
+See [Design_report/README.md](Design_report/README.md) for the output files corresponding to each report figure.
 
-Example: `run('rhombus_force_anlyse.m')`. These scripts use MATLAB graphics and
-`VideoWriter`; no additional toolbox calls were identified. Use a release
-supporting `exportgraphics` (R2020a or later); exact release compatibility has
-not been tested. MPEG-4 export also depends on platform support.
+Use MATLAB with support for `stlread`, `exportgraphics`, `tiledlayout`, `theme` and `xregion`. Video export requires MPEG-4 support. Scripts clear the workspace and overwrite existing outputs.
 
-Set `record = false` for animation without video export. Both MATLAB animations
-use `dt = 0.05` s but export at 25 frames/s, so the exported video plays faster
-than simulated time. The variable `cycle` sets the simulated time horizon;
-travel margins mean it need not equal the number of visible oscillations.
-
-## Assumptions
-
-Geometry assumes rigid bars and ideal pins. The force study uses initial spring
-tension plus linear extension force, ideal force transfer, and symmetric contact
-at two walls. Invalid geometry or spring lengths are omitted using NaN. It does
-not include dynamics, joint friction, structural deformation or a safety factor.
-Spring data must be checked against supplier specifications before hardware use.
-
-## Python animation files
-
-The optional `climber-anminate/` folder contains explanatory ManimGL scenes.
-See its [README](climber-anminate/README.md) for every scene, outputs and commands.
-These animations use a **350 mm illustrative wall gap** and prescribed motion;
-their 100 mm rise are separate visual scenarios from the MATLAB studies.
+For the earlier pitch scripts, change into `Pitch/` and run the required `.m` file. Python animation instructions are in [Pitch/climber-anminate/README.md](Pitch/climber-anminate/README.md).
